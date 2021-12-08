@@ -19,14 +19,12 @@ class MyRowColApp extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                flex: 1,
-                child: Container(
-                  color: Colors.greenAccent,
-                  child: Center(
-                    child: Text("Hello"),
-                  ),
-                ),
-              ),
+                  flex: 1,
+                  child: Container(
+                      color: Colors.greenAccent,
+                      child: Center(
+                        child: Text("Hello"),
+                      ))),
               Expanded(
                 flex: 1,
                 child: Row(
