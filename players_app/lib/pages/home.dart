@@ -4,13 +4,34 @@ import 'package:players_app/pages/view.dart';
 
 class HomePage extends StatelessWidget {
   final List<Map<String, String>> playersData = [
-    {"name": "Al Amin", "photo": "alamin.png"},
-    {"name": "Mehide", "photo": "mehide.png"},
-    {"name": "Mustafiz", "photo": "mustafiz.png"},
-    {"name": "Sakib", "photo": "sakib.png"},
-    {"name": "Taijul", "photo": "taijul.png"},
-    {"name": "Taskin", "photo": "taskin.png"},
-    {"name": "Yasir Ali", "photo": "yasir_ali.png"}
+    {
+      "name": "Al Amin",
+      "photo": "alamin.png",
+    },
+    {
+      "name": "Mehide",
+      "photo": "mehide.png",
+    },
+    {
+      "name": "Mustafiz",
+      "photo": "mustafiz.png",
+    },
+    {
+      "name": "Sakib",
+      "photo": "sakib.png",
+    },
+    {
+      "name": "Taijul",
+      "photo": "taijul.png",
+    },
+    {
+      "name": "Taskin",
+      "photo": "taskin.png",
+    },
+    {
+      "name": "Yasir Ali",
+      "photo": "yasir_ali.png",
+    }
   ];
   HomePage({
     Key? key,
