@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -9,14 +11,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String unis = "";
-
-  void getUnis() async {
-    http.Response response = await http.get(Uri.parse(
-        "http://universities.hipolabs.com/search?country=bangladesh"));
-    setState(() {
-      unis = response.body;
-    });
+  Future<List> getUnis() async {
+    http.Response response = await http.get(
+        Uri.parse("http://universities.hipolabs.com/search?country=india"));
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      throw Exception("Error!");
+    }
   }
 
   @override
@@ -36,7 +38,36 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: Container(
-            child: Text('$unis'),
+            child: FutureBuilder(
+              future: getUnis(),
+              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                if (snapshot.hasData) {
+                  List? unis = snapshot.data;
+                  return ListView.builder(
+                    itemCount: unis!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Card(
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.blue,
+                            child: Text(unis[index]["alpha_two_code"]),
+                          ),
+                          title: Text(unis[index]["name"]),
+                          subtitle: Text(unis[index]["domains"][0]),
+                        ),
+                      );
+                    },
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text("Error loading data"),
+                  );
+                }
+                return Center(
+                  child: Text("Loading.."),
+                );
+              },
+            ),
           ),
         ),
       ),
