@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
             }
 
             return Center(
-              child: Text("Loading..."),
+              child: CircularProgressIndicator(),
             );
           }),
     );
