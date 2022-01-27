@@ -45,4 +45,24 @@ void main() {
       expect(notesWeGot, ["another note"]);
     });
   });
+
+  test("deleteNote: should return true", () async {
+    //Arrange
+
+    //Act
+    bool isDeleted = await NotesController().deleteNote(1);
+
+    //Assert
+    expect(isDeleted, true);
+  });
+
+  test("updateNote: should return true", () async {
+    //Arrange
+
+    //Act
+    bool isUpdated = await NotesController().updateNote(0, "new note 1");
+
+    //Assert
+    expect(isUpdated, true);
+  });
 }
